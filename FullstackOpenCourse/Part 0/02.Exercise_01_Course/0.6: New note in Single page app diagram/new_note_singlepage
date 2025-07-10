@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: User writes a note and clicks Save
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    Note right of server: Server saves the note in memory
+    server-->>browser: Response with status (usually 201 Created or empty 200 OK)
+    deactivate server
+
+    Note right of browser: The browser updates the local list of notes and re-renders the view without reloading the page
